@@ -121,4 +121,4 @@ SOFTWARE.
 ## Contact
 ningchenliang98@gmail.com
 ## Acknowledgements
-Acknowledgements or thanks to any individuals, organizations, or resources that were helpful or influential in the development of your project.
+Thanks to the guideline provided by 233 prof, Mr.Sung. and his good grader.
