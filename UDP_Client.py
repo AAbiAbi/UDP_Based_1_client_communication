@@ -249,19 +249,19 @@ def change_END_PACKET(content):
 
 
 if __name__ == '__main__':
-    i = 1
-    packets = {
-        1: "da",
-        2: "3edewddc",
-        3: "jbdjiskzb",
-        4: "nsjibhdiuj",
-        5: "sdnjskan"
-    }
-    while(i <= 5):
-        trigger_UDP_client(i, packets)
-        i = i + 1
+    # i = 1
+    # packets = {
+    #     1: "da",
+    #     2: "3edewddc",
+    #     3: "jbdjiskzb",
+    #     4: "nsjibhdiuj",
+    #     5: "sdnjskan"
+    # }
+    # while(i <= 5):
+    #     trigger_UDP_client(i, packets)
+    #     i = i + 1
 
-
+##comment the part, otherwise.....
     packet = {
         1: "1",
         2: "2",

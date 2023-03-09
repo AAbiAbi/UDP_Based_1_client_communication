@@ -116,14 +116,14 @@ def trigger_UDP_server():
             seg_hashset.add(seg_No)
             send_ACK(return_add, client_id, seg_No)
             print("===========================================")
-            # if (len(seg_hashset) == 5):
-            #
-            #     send_ACK_total(return_add,client_id,seg_No)
-            #     # global seg_hashset
-            #     seg_hashset.clear()
-            #     seg_No = 1
-            #     print("Clear hashset \n")
-            #     print("-------------SERVER FIN------------------")
+            if (len(seg_hashset) == 5):
+
+                send_ACK_total(return_add,client_id,seg_No)
+                # global seg_hashset
+                seg_hashset.clear()
+                seg_No = 1
+                print("Clear hashset \n")
+                print("-------------SERVER FIN------------------")
 
 
 # ================fin def==================

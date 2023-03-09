@@ -13,10 +13,22 @@ There are two ways to use the project.
 ### Conbination
 If you want to activate the server and client at one time, then you can run main.py for procedure 1 and main1.py for procedure 2 .
 The console will return the conbinations of the results from client and server. But it still easy to read.
+![alt text](pic/procedure2.png)
+As you can see, the"------------------------------" represent the client sending message. After that the server response in "==================="block.
+Then the client show the received message from server below.
+
+The very similar solution to check the reject messages.
+![alt text](pic/procedure1.png)
+Apperently, in this pic, server reject the packet beacuse of 'Out of Sequence'.
+So does the client realizes that. It gives a "...." to resend the message again.
+When you run the code, you will find that the resend time is three, not infinitely sending.
+
+
 
 ### Seprated
 If you want to observe the output seperately from client or server, you can run UDP_client.py. There is an entrance of code within. 
 Especially when you want to test Time Expired situation, you can run UDP_client.py only.
+
 
 ## Explaination
 ### Procedure:
