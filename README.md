@@ -1,4 +1,4 @@
-# UDP Protocal-based communication with one client
+# UDP Protocol-based communication with one client
 COEN 233 Computer Networks.
 
 Program assignment 1: 
@@ -10,27 +10,54 @@ Python 3.9.12
 
 ## Usage
 There are two ways to use the project.
-### Conbination
+### Combination
 If you want to activate the server and client at one time, then you can run main.py for procedure 1 and main1.py for procedure 2 .
-The console will return the conbinations of the results from client and server. But it still easy to read.
+The console will return the combinations of the results from client and server. But it is still easy to read.
 ![alt text](pic/procedure2.png)
 As you can see, the"------------------------------" represent the client sending message. After that the server response in "==================="block.
 Then the client show the received message from server below.
 
+I made these by multiple threads and threading control,which you can see in the main.py and main1.py
+
 The very similar solution to check the reject messages.
 ![alt text](pic/procedure1.png)
-Apperently, in this pic, server reject the packet beacuse of 'Out of Sequence'.
+Apparently, in this pic, server reject the packet because of 'Out of Sequence'.
 So does the client realizes that. It gives a "...." to resend the message again.
 When you run the code, you will find that the resend time is three, not infinitely sending.
 
 
 
-### Seprated
-If you want to observe the output seperately from client or server, you can run UDP_client.py. There is an entrance of code within. 
+### Seperated
+If you want to observe the output separately from client or server, you can run UDP_client.py. There is an entrance of code within. 
 Especially when you want to test Time Expired situation, you can run UDP_client.py only.
 
+To see the results separately, you should let server listening. Run UDP_server.py first. And you will get the output as below.
+![alt text](pic/server start listening.png)
 
-## Explaination
+Note that once you run UDP_server.py, means server will keep listening. That's why we can send messages continuously.
+
+Then run UDP_client.py as the way you want. You may get two types of result as the code I write in the file. One is success. The other is rejection and Error handling.
+![alt text](pic/client_ACk.png)
+As you can see. When all pieces are received, the client will receive an additional ACK called [FULLY RECEIVED]. In real world, this means buffer has been cleaned.
+
+Correspondingly, the server will realize and send total ACK back. Due to UDP protocol cannot guarantee in sequence. We may re-order all pieces after by sequence number.
+So I design an improvement that the server will send another ack if 5 pieces are successfully receiver.
+
+![alt text](pic/serverfullyack.png)
+
+These two pictures, you can see reject more clear.
+![alt text](pic/client_rej.png)
+(Manually send wrong messages from client,some are resend third times, some just stop resending.)
+![alt text](pic/server_reject.png)
+(Rejection handling in server)
+
+Last part, time stamp:
+Every message when sending will be in a try catch block. And if the client buffer does not receive any response from server, it will trigger a TimeOut Exception.
+You can test the timeout by exclusively running UDP_client.py, which means the server cannot make any reactions as follows.
+![alt text](pic/timeout_client.png)
+
+
+## Explanation
 ### Procedure:
 
 The client sends five packets (Packet 1, 2, 3, 4, 5) to the server.
@@ -86,7 +113,7 @@ copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
